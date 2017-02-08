@@ -24,13 +24,18 @@ or achieve your saving targets.
 
 ## Usage
 
-Display the basic turningledge report: 
+Once you `cd` to where turningledge is stored, you can display the basic
+turningledge report: 
 
 ```bash
 $ ./turningledge.sh
 ```
 
-Show how turningledge got to its workings:
+Or you can show how turningledge got to its workings:
+
+```bash
+$ ./turningledge.sh -v
+```
 
 ## Licence
 
