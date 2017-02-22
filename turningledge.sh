@@ -17,10 +17,10 @@ function log () {
 }
 
 
-printf "************************\n"
-printf "* Turning Ledge Report *\n"
-printf "*      %s      *\n"         "$(date +"%d/%m/%Y")"
-printf "************************\n"
+printf "*******************\n"
+printf "Turningledge Report \n"
+printf "%s          \n"         "$(date +"%d/%m/%Y")"
+printf "*******************\n"
 
 log "Reading config file...\n"
 source ~/.turningledgerc
@@ -54,8 +54,8 @@ log "Unbudgeted expenses\n"
 log "===================\n"
 
 function unbudgetedday {
-    ledger --unbudgeted register not "Credit Card" \
-        -p "last day" \
+    ledger --unbudgeted register not "Liabilities" \
+        -p "today" \
         --format "%(display_total)\n" --tail 1
 }
 unbudgetedday=$(tr -dc '0-9.' <<< $(unbudgetedday))
@@ -66,8 +66,8 @@ else
 fi
 
 function unbudgetedweek {
-    ledger --unbudgeted register not "Credit Card" \
-        -p "last week" \
+    ledger --unbudgeted register not "Liabilities" \
+        -p "last 7 days" \
         --format "%(display_total)\n" --tail 1
 }
 if [[ -z $(unbudgetedweek) ]] ; then
@@ -77,7 +77,7 @@ else
 fi
 
 function unbudgetedmonth {
-    ledger --unbudgeted register not "Credit Card" \
+    ledger --unbudgeted register not "Liabilities" \
         -p "last 30 days" \
         --format "Past month: %(display_total)\n" --tail 1
 }
@@ -88,8 +88,8 @@ else
 fi
 
 function unbudgetedyear {
-    ledger --unbudgeted register not "Credit Card" \
-        -p "last year" \
+    ledger --unbudgeted register not "Liabilities" \
+        -p "last 365 days" \
         --format "Past year: %(display_total)\n" --tail 1
 }
 if [[ -z $(unbudgetedyear) ]] ; then
