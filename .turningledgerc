@@ -1,0 +1,6 @@
+# The name of your salary account
+salaryaccount="Income: Salary"
+
+# Anything which should be included in your regular expenses but, because it
+# isn't listed under an explicit "Expenses" account, otherwise wouldn't be
+regularexpensesinclude=("Assets:Bank:Savings"\ not\ "Assets")
