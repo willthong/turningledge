@@ -56,7 +56,7 @@ log "===================\n"
 function unbudgetedday {
     ledger --unbudgeted register not "Liabilities" \
         -p "today" \
-        --format "%(display_total)\n" --tail 1
+        --format "%(display_total)\n" --tail 1 | tail -1
 }
 unbudgetedday=$(tr -dc '0-9.' <<< $(unbudgetedday))
 if [[ -z $(unbudgetedday) ]] ; then
@@ -68,8 +68,9 @@ fi
 function unbudgetedweek {
     ledger --unbudgeted register not "Liabilities" \
         -p "last 7 days" \
-        --format "%(display_total)\n" --tail 1
+        --format "%(display_total)\n" --tail 1 | tail -1
 }
+
 if [[ -z $(unbudgetedweek) ]] ; then
     unbudgetedweek=0.00
 else
@@ -79,7 +80,7 @@ fi
 function unbudgetedmonth {
     ledger --unbudgeted register not "Liabilities" \
         -p "last 30 days" \
-        --format "Past month: %(display_total)\n" --tail 1
+        --format "Past month: %(display_total)\n" --tail 1 | tail -1
 }
 if [[ -z $(unbudgetedmonth) ]] ; then
     unbudgetedmonth=0.00
@@ -90,7 +91,7 @@ fi
 function unbudgetedyear {
     ledger --unbudgeted register not "Liabilities" \
         -p "last 365 days" \
-        --format "Past year: %(display_total)\n" --tail 1
+        --format "Past year: %(display_total)\n" --tail 1 | tail -1
 }
 if [[ -z $(unbudgetedyear) ]] ; then
     unbudgetedyear=0.00
@@ -98,10 +99,10 @@ else
     unbudgetedyear=$(tr -dc '0-9.' <<< $(unbudgetedyear))
 fi
 
-log "Past day:      £ %7s\n" "$unbudgetedday"
-log "Past week:     £ %7s\n" "$unbudgetedweek"
-log "Past month:    £ %7s\n" "$unbudgetedmonth"
-log "Past year:     £ %7s\n" "$unbudgetedyear"
+log "Past day:      £ %8s\n" "$unbudgetedday"
+log "Past week:     £ %8s\n" "$unbudgetedweek"
+log "Past month:    £ %8s\n" "$unbudgetedmonth"
+log "Past year:     £ %8s\n" "$unbudgetedyear"
 
 printf "\n"
 printf "Allowable spending\n"
@@ -123,7 +124,7 @@ function allowableyear {
     echo "scale=2; ($monthlyincomeex*12)-$unbudgetedyear" | bc
 }
 
-printf "Today:         £ %7s\n" "$(allowableday)"
-printf "This week:     £ %7s\n" "$(allowableweek)"
-printf "This month:    £ %7s\n" "$(allowablemonth)"
-printf "This year:     £ %7s\n" "$(allowableyear)"
+printf "Today:         £ %8s\n" "$(allowableday)"
+printf "This week:     £ %8s\n" "$(allowableweek)"
+printf "This month:    £ %8s\n" "$(allowablemonth)"
+printf "This year:     £ %8s\n" "$(allowableyear)"
