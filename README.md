@@ -13,6 +13,9 @@ figure for how much money you get to spend per day while still breaking even or
 saving, or alternatively how much money you need to save per day to break even
 or achieve your saving targets.
 
+Read more about it in [this article on my
+blog](https://www.willthong.com/turningledge.html)!
+
 ## Setup
 
 1. Check that your Ledger installation runs by default without needing to call
@@ -39,4 +42,4 @@ $ ./turningledge.sh -v
 
 ## Licence
 
-Turningledge.sh is free software released under the [GNU General Public Licence v3](https://www.gnu.org/licenses/gpl-3.0.en.html).
+turningledge is free software released under the [GNU General Public Licence v3](https://www.gnu.org/licenses/gpl-3.0.en.html).
