@@ -18,7 +18,7 @@ function log () {
 
 
 printf "*******************\n"
-printf "Turningledge Report \n"
+printf "turningledge report \n"
 printf "%s          \n"         "$(date +"%d/%m/%Y")"
 printf "*******************\n"
 
